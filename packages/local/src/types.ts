@@ -101,6 +101,7 @@ export interface ChatGPTClient {
   /** Sign out of the selected profile. Its registration and identity remain saved. */
   disconnect(): Promise<void>;
   streamResponse(options: StreamResponseOptions): Promise<{ text: string }>;
+  getAccessToken(): Promise<string>;
 }
 
 export interface StoredCredentials {

@@ -163,6 +163,7 @@ export function createChatGPT(config: ChatGPTConfig): ChatGPTClient {
     }
   }
 
+
   return {
     async signIn(options = {}) {
       assertIdle();
@@ -327,6 +328,10 @@ export function createChatGPT(config: ChatGPTConfig): ChatGPTClient {
     },
 
     async listModels(options = {}) { return authenticated(listModels, options.signal); },
+
+    async getAccessToken() {
+      return authenticated(async (accessToken) => accessToken);
+    },
 
     async streamResponse(options) {
       if (!options.model.trim()) throw new ChatGPTError("invalid_request", "Choose a model before starting a request.");
